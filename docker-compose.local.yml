@@ -1,0 +1,17 @@
+version: "3"
+
+services:
+  app:
+    build: .
+    image: workship_app
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/usr/src/app
+      - /usr/src/app/node_modules
+    networks:
+      - workship_app-web
+    stdin_open: true
+
+networks:
+  workship_app-web:

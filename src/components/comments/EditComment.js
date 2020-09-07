@@ -10,29 +10,30 @@ import { useForm } from "../customHooks/useForm";
 const EditComment = ({ match, history }) => {
   const dispatch = useDispatch();
   const { comment } = useSelector((state) => state.comment);
-  // const [values, setValues] = useState(comment);
-  const [values, handleInput] = useForm(comment);
 
-  // const handleInput = (event) => {
-  //   let { name, value } = event.target;
-  //   setValues({ ...values, [name]: value });
-  // };
-  console.log(values);
-
-  // const statee = useMemo(() => comment, [comment]);
-  // console.log('esate', statee);
+  const [values, handleInput, setValues] = useForm(comment);
 
   useEffect(() => {
     const { id } = match.params;
     dispatch(getComment(id));
   }, [dispatch, match.params]);
 
+  useEffect(() => {
+    localStorage.setItem("state", JSON.stringify(values));
+  }, [values]);
+
   const handleUpdate = (e) => {
     e.preventDefault();
     const { id } = match.params;
-
     dispatch(updateComment(id, values, history));
+    localStorage.removeItem("state");
   };
+
+  useEffect(() => {
+    const { id } = match.params;
+    dispatch(getComment(id));
+  }, [dispatch, match.params]);
+
   return (
     <div className="card col s12">
       <div className="card-title">Formulario</div>
