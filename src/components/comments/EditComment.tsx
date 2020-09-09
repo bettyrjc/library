@@ -1,38 +1,62 @@
-import React, { useEffect, useState, useMemo } from "react";
-import Button from "@material-ui/core/Button";
+// Dependencies
+import * as React from "react";
 
 import { useDispatch, useSelector } from "react-redux";
-import { updateComment, getComment } from "../../action/commentAction";
+import { RouteComponentProps } from "react-router-dom";
 
+// Components
 import Input from "../../helpers/input";
+
+// Actions
+import { updateComment, getComment } from "../../action/commentAction";
 import { useForm } from "../customHooks/useForm";
 
-const EditComment = ({ match, history }) => {
+// Interfaces
+import { IComment, IForm } from "../../interfaces";
+
+// Types
+import { MatchParams } from "../../types";
+
+type State = {
+  comment: { comment: IComment };
+};
+
+interface IFormHook extends IForm {
+  values: {
+    name: string;
+    body: string;
+    email: string;
+  };
+}
+
+const EditComment: React.FC<RouteComponentProps<MatchParams>> = ({
+  match,
+  history,
+}) => {
   const dispatch = useDispatch();
-  const { comment } = useSelector((state) => state.comment);
+  const { comment } = useSelector((state: State) => state.comment);
+  const { values, handleInput } = useForm(comment) as IFormHook;
 
-  const [values, handleInput, setValues] = useForm(comment);
-
-  useEffect(() => {
+  React.useEffect(() => {
     const { id } = match.params;
     dispatch(getComment(id));
   }, [dispatch, match.params]);
 
-  useEffect(() => {
+  React.useEffect(() => {
     localStorage.setItem("state", JSON.stringify(values));
   }, [values]);
 
-  const handleUpdate = (e) => {
+  React.useEffect(() => {
+    const { id } = match.params;
+    dispatch(getComment(id));
+  }, [dispatch, match.params]);
+
+  const handleUpdate = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const { id } = match.params;
     dispatch(updateComment(id, values, history));
     localStorage.removeItem("state");
   };
-
-  useEffect(() => {
-    const { id } = match.params;
-    dispatch(getComment(id));
-  }, [dispatch, match.params]);
 
   return (
     <div className="card col s12">

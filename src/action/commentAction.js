@@ -19,7 +19,6 @@ export const getComments = () => async (dispatch) => {
       type: GET_COMMENTS,
       payload: res.data,
     });
-
     removeLoading(dispatch);
   } catch (err) {
     removeLoading(dispatch);
@@ -37,7 +36,6 @@ export const getComment = (id) => async (dispatch) => {
       type: GET_COMMENT,
       payload: res.data,
     });
-
     removeLoading(dispatch);
   } catch (err) {
     removeLoading(dispatch);

@@ -7,7 +7,7 @@ export const useForm = (initialState = {}) => {
     setValues(initialState);
   };
 
-  const handleInput = (e) => {
+  const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setValues({
       ...values,
@@ -15,5 +15,5 @@ export const useForm = (initialState = {}) => {
     });
   };
 
-  return [values, handleInput, setValues, reset];
+  return { values, handleInput, setValues, reset };
 };

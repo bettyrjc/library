@@ -1,18 +1,37 @@
-import React, { useEffect } from "react";
-import Button from "@material-ui/core/Button";
-import { Link } from "react-router-dom";
+// Dependencies
+import * as React from "react";
+import { Link, RouteComponentProps } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { getComment } from "../../action/commentAction";
+import Button from "@material-ui/core/Button";
+
+// Components
 import CommentIndividual from "./oneComment";
 
-const Comment = ({ match }) => {
+// Actions
+import { getComment } from "../../action/commentAction";
+
+// Interfaces
+import { IComment } from "../../interfaces";
+
+// Types
+import { MatchParams } from "../../types";
+
+type State = {
+  comment: { comment: IComment };
+};
+
+const Comment: React.FC<RouteComponentProps<MatchParams>> = ({ match }) => {
   const dispatch = useDispatch();
-  const { comment } = useSelector((state) => state.comment);
+  const { comment } = useSelector((state: State) => state.comment);
   console.log(comment);
 
-  useEffect(() => {
+  React.useEffect(() => {
+    console.log(match);
+
     const { id } = match.params;
     dispatch(getComment(id));
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dispatch, match.params]);
 
   return (

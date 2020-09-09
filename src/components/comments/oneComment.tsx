@@ -1,6 +1,12 @@
-import React from "react";
+import * as React from "react";
 
-const oneComment = ({ comment }) => {
+//  Interfaces
+import { IComment } from "../../interfaces";
+
+type Props = {
+  comment: IComment;
+};
+const oneComment: React.FC<Props> = ({ comment }) => {
   const { id, name, body, email } = comment;
   return (
     <div>

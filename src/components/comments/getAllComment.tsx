@@ -1,9 +1,16 @@
-import React from "react";
-
-import Button from "@material-ui/core/Button";
+// Dependencies
+import * as React from "react";
 import { Link } from "react-router-dom";
+import Button from "@material-ui/core/Button";
 
-const getAllComment = ({ comment }) => {
+//  Interfaces
+import { IComment } from "../../interfaces";
+
+type Props = {
+  comment: IComment;
+};
+
+const getAllComment: React.FC<Props> = ({ comment }) => {
   const { id, body, name, email } = comment;
   return (
     <>

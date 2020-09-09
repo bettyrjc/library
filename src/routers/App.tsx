@@ -1,11 +1,12 @@
-import React from "react";
+import * as React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+
 import Home from "../pages/Home";
 import Comments from "../components/comments/Comments";
-import Comment from "../components/comments/Comment.tsx";
+import Comment from "../components/comments/Comment";
 import EditComment from "../components/comments/EditComment";
 
-const App = () => {
+const App: React.FC = () => {
   return (
     <Router>
       <Switch>
