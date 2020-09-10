@@ -64,6 +64,7 @@ const EditComment: React.FC<RouteComponentProps<MatchParams>> = ({
       <div className="card-content">
         <form onSubmit={handleUpdate}>
           <Input
+            name="name"
             id="name"
             label="Name"
             value={values.name}
@@ -71,6 +72,7 @@ const EditComment: React.FC<RouteComponentProps<MatchParams>> = ({
             onChange={handleInput}
           />
           <Input
+            name="email"
             id="email"
             label="Correo"
             value={values.email}
@@ -79,6 +81,7 @@ const EditComment: React.FC<RouteComponentProps<MatchParams>> = ({
             onChange={handleInput}
           />
           <Input
+            name="body"
             id="body"
             label="Comentario"
             value={values.body}

@@ -10,3 +10,9 @@ export interface IForm {
   setValues: () => void;
   reset: () => void;
 }
+
+export interface IUser {
+  id: number;
+  name: string;
+  email: string;
+}
