@@ -1,74 +1,31 @@
 // Dependencies
 import * as React from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import {
-  AppBar,
-  Drawer,
-  CssBaseline,
-  Toolbar,
-  List,
-  Typography,
-  ListItem,
-  Theme,
-  ListItemText,
-} from "@material-ui/core";
-
 import { Link } from "react-router-dom";
-
-const drawerWidth = 240;
-
-const useStyles = makeStyles((theme: Theme) => ({
-  root: {
-    display: "flex",
-  },
-  appBar: {
-    zIndex: theme.zIndex.drawer + 1,
-  },
-  drawer: {
-    width: drawerWidth,
-    flexShrink: 0,
-  },
-  drawerPaper: {
-    width: drawerWidth,
-  },
-  drawerContainer: {
-    overflow: "auto",
-  },
-}));
-
-export default function ClippedDrawer() {
-  const classes = useStyles();
-
+import img from "../../image/paper-clip.png";
+const Navbar: React.FC = () => {
   return (
-    <div className={classes.root}>
-      <CssBaseline />
-      <AppBar position="fixed" className={classes.appBar}>
-        <Toolbar>
-          <Typography variant="h6" noWrap>
-            Comentarios
-          </Typography>
-        </Toolbar>
-      </AppBar>
-      <Drawer
-        className={classes.drawer}
-        variant="permanent"
-        classes={{
-          paper: classes.drawerPaper,
-        }}
-      >
-        <Toolbar />
-        <div className={classes.drawerContainer}>
-          <List>
-            {["comentarios", "users"].map((text) => (
-              <ListItem button key={text}>
-                <ListItemText>
-                  <Link to={`/${text}`}>{text}</Link>
-                </ListItemText>
-              </ListItem>
-            ))}
-          </List>
+    <div className="bg-gray-200 w-full h-16 flex justify-between px-4 items-center">
+      <div className="flex items-center">
+        <div className="w-10 h-10">
+          <img src={img} alt="png" />
         </div>
-      </Drawer>
+        <h1 className="font-bold ">Libreria </h1>
+      </div>
+      <div className="flex">
+        <li className="mr-2 hover:text-blue-500 cursor-pointer text-xs">
+          <Link to="/usuarios">Usuario</Link>
+        </li>
+        <li className="mr-2 hover:text-blue-500 cursor-pointer text-xs">
+          <Link to="/sobre-nosotros">Sobre nosotros</Link>
+        </li>
+        <li className="mr-2 hover:text-blue-500  cursor-pointer text-xs">
+          <Link to="/fotos">Fotos</Link>
+        </li>
+        <li className="mr-2 hover:text-blue-500 cursor-pointer text-xs">
+          <Link to="/usuarios">Comentarios</Link>
+        </li>
+      </div>
     </div>
   );
-}
+};
+export default Navbar;

@@ -25,7 +25,7 @@ const Comments: React.FC = () => {
   }, [dispatch]);
 
   return (
-    <div>
+    <div className="bg-red-500 m-4">
       {comments.map((comment) => (
         <Link to={`/comentarios/${comment.id}`} key={comment.id}>
           <Comment comment={comment} />
