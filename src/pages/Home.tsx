@@ -8,7 +8,7 @@ const Home: React.FC = () => {
   return (
     <>
       <Navbar />
-      <div className="w-full h-100 block">
+      <div className="w-full h-100  ">
         <img
           className="h-100 w-full block"
           src="https://espacio.fundaciontelefonica.com/wp-content/uploads/2016/03/portada-libros.jpg"
@@ -65,6 +65,26 @@ const Home: React.FC = () => {
                 src="https://www.flaticon.com/svg/static/icons/svg/3237/3237867.svg"
                 alt="libreta"
               />
+            </div>
+          </div>
+        </div>
+        <div className="mt-4">
+          <h1 className="">Lo mas vendido</h1>
+          <div className="flex bg-red-400">
+            <div className="border-red-800 border-solid md:flex mt-2">
+              <div className="mr-2">
+                <img
+                  className="w-32 h-48"
+                  src="https://covers.alibrate.com/b/59872e9ccba2bce50c1cbcd7/34fe7d67-f9d6-421c-85f6-6ebc81532936/share"
+                  alt="img"
+                />
+              </div>
+              <p className="w-64 bg-orange-400">
+                Is simply dummy text of the printing and typesetting industry.
+                Lorem Ipsum has been the industry's standard dummy text ever
+                since the 1500s, when an unknown printer took a galley of type
+                and scrambled it to make a type specimen book.
+              </p>
             </div>
           </div>
         </div>
