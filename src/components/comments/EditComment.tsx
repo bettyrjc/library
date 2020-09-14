@@ -6,7 +6,8 @@ import { RouteComponentProps } from "react-router-dom";
 
 // Components
 import Input from "../../helpers/input";
-
+import Footer from "../layout/footer";
+import Navbar from "../layout/navbar";
 // Actions
 import { updateComment, getComment } from "../../action/commentAction";
 import { useForm } from "../customHooks/useForm";
@@ -59,44 +60,53 @@ const EditComment: React.FC<RouteComponentProps<MatchParams>> = ({
   };
 
   return (
-    <div className="card col s12">
-      <div className="card-title">Formulario</div>
-      <div className="card-content">
-        <form onSubmit={handleUpdate}>
-          <Input
-            name="name"
-            id="name"
-            label="Name"
-            value={values.name}
-            active_label={true}
-            onChange={handleInput}
-          />
-          <Input
-            name="email"
-            id="email"
-            label="Correo"
-            value={values.email}
-            type="email"
-            active_label={true}
-            onChange={handleInput}
-          />
-          <Input
-            name="body"
-            id="body"
-            label="Comentario"
-            value={values.body}
-            active_label={true}
-            onChange={handleInput}
-          />
-
-          <input
-            type="submit"
-            value="Update Contact"
-            className="btn btn-light btn-block indigo"
-          />
-        </form>
+    <>
+      <Navbar />
+      <div className="h-screen flex justify-center items-center">
+        <div className="p-4 border border-indigo-200 flex flex-col items-center justify-center w-100 rounded-lg">
+          <div className="font-bold mb-2">Comentario</div>
+          <form onSubmit={handleUpdate}>
+            <Input
+              name="name"
+              id="name"
+              label="Name"
+              value={values.name}
+              active_label={true}
+              onChange={handleInput}
+            />
+            <Input
+              name="email"
+              id="email"
+              label="Correo"
+              value={values.email}
+              type="email"
+              active_label={true}
+              onChange={handleInput}
+            />
+            <div className="mx-2">
+              <label htmlFor="body">Comentario</label>
+              <div>
+                <textarea
+                  name="body"
+                  id="body"
+                  value={values.body}
+                  onChange={handleInput}
+                  className="border border-blue-700 mb-2 w-full"
+                ></textarea>
+              </div>
+            </div>
+            <div className="flex justify-center">
+              <input
+                type="submit"
+                value="Update Contact"
+                className="mt-2 bg-blue-500 px-4 transition-all ease-out rounded-lg hover:shadow-lg hover:tracking-widest py-2 text-white font-bold  "
+              />
+            </div>
+          </form>
+        </div>
       </div>
-    </div>
+      <Footer />
+    </>
   );
 };
 

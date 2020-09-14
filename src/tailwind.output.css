@@ -618,6 +618,26 @@ video {
   }
 }
 
+@media (min-width: 1024px) {
+  .absolute-55 {
+    position: absolute;
+    z-index: 15;
+    left: 3%;
+  }
+}
+
+@media (min-width: 768px) {
+  .absolute-55 {
+    position: absolute;
+    z-index: 15;
+    left: 6%;
+  }
+
+  .absolute-left {
+    left: -6%;
+  }
+}
+
 .space-y-0 > :not(template) ~ :not(template) {
   --space-y-reverse: 0;
   margin-top: calc(0px * calc(1 - var(--space-y-reverse)));

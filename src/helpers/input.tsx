@@ -15,21 +15,11 @@ const Input: React.FC<InputProps> = ({
   ...props
 }) => {
   return (
-    <div className="row">
-      {active_label || placeholder ? (
-        <div className="input-field col s12">
-          <input {...props} />
-        </div>
-      ) : (
-        <div className="input-field col s12">
-          <input {...props} />
-        </div>
-      )}
-      <label htmlFor={id} className={`${active_label && "active"} left`}>
-        {label}
-      </label>
-
-      {error && <span className="helper-text text-danger">{error}</span>}
+    <div className="mx-2">
+      <label htmlFor={id}>{label}</label>
+      <div className="border border-blue-700 mb-2 w-full">
+        <input {...props} />
+      </div>
     </div>
   );
 };

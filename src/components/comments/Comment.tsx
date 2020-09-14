@@ -2,11 +2,11 @@
 import * as React from "react";
 import { Link, RouteComponentProps } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import Button from "@material-ui/core/Button";
 
 // Components
 import CommentIndividual from "./oneComment";
-
+import Footer from "../layout/footer";
+import Navbar from "../layout/navbar";
 // Actions
 import { getComment } from "../../action/commentAction";
 
@@ -35,17 +35,22 @@ const Comment: React.FC<RouteComponentProps<MatchParams>> = ({ match }) => {
   }, [dispatch, match.params]);
 
   return (
-    <div>
-      {
-        <div>
-          <Link to={`/comentarios/edit/${match.params.id}`}>
-            <Button variant="contained" color="primary">
+    <div className="h-full">
+      <Navbar />
+      <div className="h-screen">
+        {
+          <div className="flex items-center flex-row-reverse m-4 m2">
+            <Link
+              className="bg-blue-500 px-4 transition-all ease-out rounded-lg hover:shadow-lg hover:tracking-widest py-2 text-white font-bold "
+              to={`/comentarios/edit/${match.params.id}`}
+            >
               Editar
-            </Button>
-          </Link>
-          <CommentIndividual comment={comment} />
-        </div>
-      }
+            </Link>
+            <CommentIndividual comment={comment} />
+          </div>
+        }
+      </div>
+      <Footer />
     </div>
   );
 };

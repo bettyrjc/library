@@ -14,27 +14,12 @@ const getAllComment: React.FC<Props> = ({ comment }) => {
   const { id, body, name, email } = comment;
   return (
     <>
-      <div className="row">
-        <div className="col s12">
-          <div className="card">
-            <div>
-              <h2 className="card-title">Comento: {name}</h2>
-              <span> Comentario numero: {id}</span>
-              <div className="card-content">
-                <p>{body}</p>
-              </div>
-              <div className="card-action">
-                <Link to="#">{email}</Link>
-              </div>
-            </div>
-
-            <div style={{ float: "right", marginRight: "1rem" }}>
-              <Link to={`comentarios/${id}`}>
-                <Button variant="contained" color="primary">
-                  Delete
-                </Button>
-              </Link>
-            </div>
+      <div className="mb-2 p-4 border rounded-lg">
+        <div>
+          <h2 className="font-bold">{name}</h2>
+          <div className="ml-2">
+            <p>{body}</p>
+            <span className="text-xs text-blue-700">{email}</span>
           </div>
         </div>
       </div>

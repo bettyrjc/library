@@ -5,7 +5,8 @@ import { Link } from "react-router-dom";
 
 // Components
 import Comment from "./getAllComment";
-
+import Footer from "../layout/footer";
+import Navbar from "../layout/navbar";
 // Actions
 import { getComments } from "../../action/commentAction";
 
@@ -25,13 +26,17 @@ const Comments: React.FC = () => {
   }, [dispatch]);
 
   return (
-    <div className="bg-red-500 m-4">
-      {comments.map((comment) => (
-        <Link to={`/comentarios/${comment.id}`} key={comment.id}>
-          <Comment comment={comment} />
-        </Link>
-      ))}
-    </div>
+    <>
+      <Navbar />
+      <div className="p-4">
+        {comments.map((comment) => (
+          <Link to={`/comentarios/${comment.id}`} key={comment.id}>
+            <Comment comment={comment} />
+          </Link>
+        ))}
+      </div>
+      <Footer />
+    </>
   );
 };
 

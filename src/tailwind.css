@@ -1,6 +1,23 @@
 @tailwind base;
 
 @tailwind components;
+@media (min-width: 1024px) {
+  .absolute-55 {
+    position: absolute;
+    z-index: 15;
+    left: 3%;
+  }
+}
+@media (min-width: 768px) {
+  .absolute-55 {
+    position: absolute;
+    z-index: 15;
+    left: 6%;
+  }
+  .absolute-left {
+    left: -6%;
+  }
+}
 
 @tailwind utilities;
 
