@@ -1,5 +1,3 @@
-# Auth service - Frontend
-
 ## Instalación
 
 🐋️ [Instalar docker ]('https://docs.docker.com/engine/install/')
